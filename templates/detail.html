@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Todo detial{% endblock %}
+
+{% block content %}
+    <p> Title: {{ object.title }} </p>
+    <p> caption: {{ object.caption }} </p>
+    <p> created: {{ object.created }} </p>
+    <a href="{% url 'home' %}">Back to Home</a>
+    <br>
+    <br>
+    <a href="{% url 'delete' object.id %}">Delete</a>
+    <br>
+    <br>
+    <a href="{% url 'update' object.id %}">Update This Todo</a>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Todo Lists{% endblock title %}
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p> welcome {{ user.username }} </p>
+        <p><a href="{% url 'logout' %}">Log Out</a></p>    <hr>
+    {% else %}
+            <a href="{% url 'login' %}">Log In</a>
+        /
+            <a href="{% url 'User_registration' %}">Sign Up</a>  <hr>
+    {% endif %}
+    {% for object in object_list %}
+        <a href=" {% url 'detail' object.id %}  "><li> {{ object.title }} </li></a>
+        <br>
+    {% empty  %}
+        <p>Todo List is Empty!</p>
+    {% endfor %}
+
+<a href="{% url 'create' %}">Create Todo</a>
+{% endblock content %}
